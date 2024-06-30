@@ -6,7 +6,7 @@ const handler = async (m, {conn, args}) => {
       title: 'رابـط الـجـروب',
       body: '『🔥┇𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸️𓆪
       previewType: 0, thumbnail: fs.readFileSync('./Menu2.jpg'),
-      sourceUrl: `http://wa.me/201050861664`}}});
+      sourceUrl: `http://wa.me/201030947624`}}});
 };
 handler.help = ['linkgroup'];
 handler.tags = ['group'];
