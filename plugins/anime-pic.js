@@ -9,11 +9,11 @@ let handler = async (m, {
             key: m.key,
         }
     })
-    let res = await fetch('https://api.waifu.pics/sfw/waifu')
+    let res = await fetch('')
     if (!res.ok) throw await res.text()
     let json = await res.json()
     if (!json.url) throw 'Error!'
-    await conn.sendFile(m.chat, json.url, null, "*『🔥┇𝙼𝙴𝙶𝙾-𝙱𝙾𝚃』*", m)
+    await conn.sendFile(m.chat, json.url, null, "*『🔥┇𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸️𓆪』*", m)
 }
 handler.help = ['waifu']
 handler.tags = ['internet']
