@@ -24,17 +24,16 @@ let rtotalreg = Object.values(global.db.data.users).filter(user => user.register
 let more = String.fromCharCode(8206)
 let readMore = more.repeat(850)   
 let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-let str = `┓━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┏
+let str = *`┓━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┏
 *♕┇❯ مـرحــبـا بــك یــا ${taguser}*
 
 *≼👤≽ مـعـلــومـات الـبــوت╿↶*
 ━ ── • ⟐ • ── ━
-*♕┇❯ اســم الـبــوت ❰ 𝐌𝐄𝐆𝐎 お ‘ ❱*
+*♕┇❯ اســم الـبــوت ❰ 𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸️𓆪  お ‘ ❱*
 *♕┇❯ وقــت الـتشـغـيــل : ⌊ ${uptime} ⌉╎*
-*♕┇❯ الـمـطـور : ⌊https://wa.me/201012531172⌉╎*
-*♕┇❯ الـمـطـور : ⌊ https://Solo.to/mego51-51 ⌉╎*
+*♕┇❯الـمـطـور :/https://wa.me/201030947624⌉╎* ⌉╎*
 *♕┇❯ الـإصـدار : ⌊v3.5⌉╎*
-*♕┇❯ مـنـصـة الـتشـغـيــل :  ⌊ هيروكو ⌉╎*
+*♕┇❯ مـنـصـة الـتشـغـيــل :  ⌊ toy ⌉╎*
 *♕┇❯ يمكنك دعم البوت عن طريق كتابه .الدعم ⌉╎*
 
             ━ ── • 〄 • ── ━
@@ -268,8 +267,8 @@ let str = `┓━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┏
 *⋄━───═◞⬪قوانين⬪◟═───━⋄*
 *🔥╎❯ ممنوع سب البوت لانك سبيت البوت = سبيت المطور*
 *🔥╎❯ تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور*
-*🔥╎❯ المطور wa.me/+201012531172*
-*┛━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┗*`.trim()
+*🔥╎❯ المطور wa.me/201030947624*
+*┛━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┗*.trim()
 let buttonMessage = {
 image: pp, 
 caption: str.trim(),
@@ -282,7 +281,7 @@ externalAdReply: {
 showAdAttribution: true,
 mediaType: 'VIDEO',
 mediaUrl: null,
-title: '『🔥┇mego-𝙱𝙾𝚃』', 
+title: '『🔥┇𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸️𓆪』', 
 body: null,
 thumbnail: img,
 sourceUrl: `https://chat.whatsapp.com/HiP4wq4KssO50q78Wacv0J`
