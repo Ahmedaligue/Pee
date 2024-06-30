@@ -4,7 +4,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
 if (!db.data.chats[m.chat].nsfw && m.isGroup) throw '🎌 *Los comandos nsfw no estan permitidos*\n\nUtilice !on nsfw para activar'
   
-let res = await fetch('https://api.zahwazein.xyz/randomasupan/discord18?apikey=zenzkey_048b3b850d51')
+let res = await fetch('')
 let json = await res.json()
 conn.sendFile(m.chat, json.result, null, `🥵`, null, null, { viewOnce: true }, m)
 
