@@ -1,30 +1,40 @@
-import fs from 'fs'
+import { createHash } from 'crypto'
+import { canLevelUp, xpRange } from '../lib/levelling.js'
 import fetch from 'node-fetch'
-import { xpRange } from '../lib/levelling.js'
+import fs from 'fs'
 const { levelling } = '../lib/levelling.js'
-import PhoneNumber from 'awesome-phonenumber'
+import moment from 'moment-timezone'
 import { promises } from 'fs'
 import { join } from 'path'
-let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems }) => {
-try {
-let vn = './media/menu.mp3'
-let pp = imagen4
-let img = await(await fetch('https://www.paypal.me/MOHAMEDSharkawy642')).buffer()
-let d = new Date(new Date + 3600000)
-let locale = 'ar'
-let week = d.toLocaleDateString(locale, { weekday: 'long' })
-let date = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
-let _uptime = process.uptime() * 1000
-let uptime = clockString(_uptime)
-let user = global.db.data.users[m.sender]
-let { money, joincount } = global.db.data.users[m.sender]
-let { exp, limit, level, role } = global.db.data.users[m.sender]
-let { min, xp, max } = xpRange(level, global.multiplier)
-let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length 
-let more = String.fromCharCode(8206)
-let readMore = more.repeat(850)   
-let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-let str = *`┓━ ╼━━━╃⌬〔〕𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸️𓆪⌬╄━━━╾ ━┏
+const time = moment.tz('Egypt').format('HH')
+let wib = moment.tz('Egypt').format('HH:mm:ss')
+//import db from '../lib/database.js'
+
+let handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
+    let d = new Date(new Date + 3600000)
+    let locale = 'ar'
+    let week = d.toLocaleDateString(locale, { weekday: 'long' })
+    let date = d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
+    let _uptime = process.uptime() * 1000
+    let uptime = clockString(_uptime)
+    let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`
+    let videoUrl = 'https://telegra.ph/file/7c77b8a46acc56bb05273.mp4';
+    let vn = '.Menu.png';
+    const user = global.db.data.users[m.sender];
+    const {money, joincount} = global.db.data.users[m.sender];
+    const {exp, limit, level, role} = 
+        global.db.data.users[m.sender];
+    let { min, xp, max } = xpRange(user.level, global.multiplier)
+    let username = conn.getName(who)
+    let math = max - xp
+    let sn = createHash('md5').update(who).digest('hex')
+    let totalreg = Object.keys(global.db.data.users).length;
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length 
+    let more = String.fromCharCode(8206)
+    let readMore = more.repeat(900) 
+    const taguser = '@' +  m.sender.split('@s.whatsapp.net')[0];
+    let str = `┓━ ╼━━━╃⌬〔〕𓆩🕸️SENKU BOT🕸️𓆪⌬╄━━━╾ ━┏
 *♕┇❯ مـرحــبـا بــك یــا ${taguser}*
 
 *≼👤≽ مـعـلــومـات الـبــوت╿↶*
@@ -268,35 +278,45 @@ let str = *`┓━ ╼━━━╃⌬〔〕𓆩🕸️S𝑷𝑰𝑫𝑬𝑹🕸�
 *🔥╎❯ ممنوع سب البوت لانك سبيت البوت = سبيت المطور*
 *🔥╎❯ تمتع بالبوت ولا تكتر اسبام للبوت اذا كان لديك مشكله او تريد اضافه اوامر اخري جديده تواصل مع المطور*
 *🔥╎❯ المطور wa.me/212658594530*
-*┛━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ━┗*.trim()
-let buttonMessage = {
-image: pp, 
-caption: str.trim(),
-mentions: [m.sender],
-footer: `*${wm}*`,
-headerType: 4,
-contextInfo: {
-mentionedJid: [m.sender],
-externalAdReply: {
-showAdAttribution: true,
-mediaType: 'VIDEO',
-mediaUrl: null,
-title: '『🔥┇𓆩🕸️SENKU BOT🕸️𓆪』', 
-body: null,
-thumbnail: img,
-sourceUrl: `https://chat.whatsapp.com/HiP4wq4KssO50q78Wacv0J`
-}}}
-conn.sendMessage(m.chat, buttonMessage, { quoted: m })
-//await conn.sendFile(m.chat, vn, 'menu.mp3', null, m, true, { type: 'audioMessage', ptt: true})
-} catch {
-conn.reply(m.chat, '*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝙼𝙴𝙽𝚄 𝚃𝙸𝙴𝙽𝙴 𝚄𝙽 𝙴𝚁𝚁𝙾𝚁 𝚈 𝙽𝙾 𝙵𝚄𝙴 𝙿𝙾𝚂𝙸𝙱𝙻𝙴 𝙴𝙽𝚅𝙸𝙰𝚁𝙻𝙾, 𝚁𝙴𝙿𝙾𝚁𝚃𝙴𝙻𝙾 𝙰𝙻 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃*', m)
-}}
-handler.command = /^(المهام|مهام|الاوامر|menu|أوامر|اوامر)$/i
-handler.exp = 50
-handler.fail = null
+*┛━ ╼━━━╃⌬〔🔥〕⌬╄━━━╾ ┈┈⟢
+    `.trim();
+
+    
+
+    conn.sendMessage(m.chat, {
+        video: { url: videoUrl }, caption: str,
+        mentions: [m.sender,global.conn.user.jid],
+        gifPlayback: true,gifAttribution: 0
+    }, { quoted: m });
+}; 
+
+handler.help = ['main']
+handler.tags = ['group']
+handler.command = ['اوامر'] 
+
 export default handler
+
 function clockString(ms) {
-let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')}
+    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+    return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+}
+
+function ucapan() {
+    const time = moment.tz('Morocco ').format('HH')
+    let res = "بداية يوم سعيده ☀️"
+    if (time >= 4) {
+        res = "صباح الخير 🌄"
+    }
+    if (time >= 10) {
+        res = "مساء الخير ☀️"
+    }
+    if (time >= 15) {
+        res = "مساء الخير 🌇"
+    }
+    if (time >= 18) {
+        res = "مساء الخير 🌙"
+    }
+    return res
+                }
